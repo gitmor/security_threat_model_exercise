@@ -1,0 +1,347 @@
+{
+  "summary": {
+    "title": "sample1",
+    "owner": "Vijay"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "title": "SoftwareUpdate",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "diagramType": "STRIDE",
+        "id": 0,
+        "$$hashKey": "object:20",
+        "diagramJson": {
+          "cells": [
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 159,
+                "y": 137
+              },
+              "angle": 0,
+              "id": "57af4d19-49b5-40dc-840f-6825489ae047",
+              "z": 1,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "process 0"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 910,
+                "y": 143
+              },
+              "angle": 0,
+              "id": "892f62bf-244a-4f6c-939f-51a9be7bdda0",
+              "z": 2,
+              "hasOpenThreats": false,
+              "description": "Vendor's internet-accessible storage location, where product updates are located",
+              "isEncrypted": true,
+              "isSigned": true,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Vendor_Product_Update\n_Storage"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 350,
+                "y": 330
+              },
+              "angle": 0,
+              "id": "e5ca8cae-be68-4d8a-8405-f1f35e09fbe3",
+              "z": 3,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "process 2"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 950,
+                "y": 340
+              },
+              "angle": 0,
+              "id": "b18674ca-7713-4a3f-8b8c-30e73a9b27ae",
+              "z": 4,
+              "hasOpenThreats": false,
+              "description": "Vendor process that uploads updates to the vendor product update storage",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Vendor_Softwa\nre_Update"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 960,
+                "y": 680
+              },
+              "angle": 0,
+              "id": "23182640-cfaf-4e7f-8f8e-2f5827ec804a",
+              "z": 4,
+              "hasOpenThreats": false,
+              "description": "Vendor process that builds software",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Vendor_Build_\nProcess"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 1270,
+                "y": 350
+              },
+              "angle": 0,
+              "id": "d2185289-ab4d-4a21-820f-cdc8d69d5bfe",
+              "z": 5,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Vendor_UpdateApproval\n_Staff"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 1430,
+                "y": 670
+              },
+              "angle": 0,
+              "id": "9d64ddf7-bb52-4204-9217-3fc8c98524ac",
+              "z": 5,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Vendor_Build_Staff"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 40,
+                "y": 440
+              },
+              "angle": 0,
+              "id": "ca635965-4bdb-4770-870d-df885cbaa6ee",
+              "z": 6,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Customer_Staff"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 1340,
+                "y": 720
+              },
+              "target": {
+                "id": "23182640-cfaf-4e7f-8f8e-2f5827ec804a"
+              },
+              "vertices": [
+                {
+                  "x": 1420,
+                  "y": 720
+                },
+                {
+                  "x": 1280,
+                  "y": 720
+                },
+                {
+                  "x": 1230,
+                  "y": 720
+                },
+                {
+                  "x": 1180,
+                  "y": 720
+                },
+                {
+                  "x": 1150,
+                  "y": 730
+                },
+                {
+                  "x": 1110,
+                  "y": 740
+                },
+                {
+                  "x": 1060,
+                  "y": 720
+                }
+              ],
+              "id": "fbd4f615-e3a0-4334-86f6-29be351533da",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.5407478287088819,
+                    "offset": -21.27414623092965
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "Build interaction",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 7,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 1290,
+                "y": 630
+              },
+              "target": {
+                "x": 1310,
+                "y": 830
+              },
+              "vertices": [],
+              "id": "34a2267f-5dbd-4dfb-a326-d55ea4622c40",
+              "z": 8,
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.7097155273380001,
+                    "offset": -18.676707475238146
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "Internet or Intranet\nboundary",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "attrs": {}
+            }
+          ]
+        },
+        "size": {
+          "height": 1077,
+          "width": 1930
+        }
+      }
+    ]
+  }
+}
