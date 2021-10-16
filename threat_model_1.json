@@ -129,49 +129,91 @@
                 "height": 100
               },
               "position": {
-                "x": 960,
-                "y": 680
+                "x": 954,
+                "y": 778
               },
               "angle": 0,
               "id": "23182640-cfaf-4e7f-8f8e-2f5827ec804a",
               "z": 4,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "description": "Vendor process that builds software",
+              "threats": [
+                {
+                  "ruleId": "b2a6d40d-d3f8-4750-8e4d-c02cc84b13dc",
+                  "title": "Generic spoofing threat",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic spoofing threat",
+                  "threatId": "c0401a0e-0325-442b-ae80-4726d7ef2735",
+                  "$$hashKey": "object:117"
+                },
+                {
+                  "ruleId": "4adaa48a-0345-4533-a189-64c98c4420dd",
+                  "title": "Generic tampering threat",
+                  "type": "Tampering",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic tampering threat",
+                  "threatId": "03cb879f-b03a-44fc-89ec-13abb0c07b29",
+                  "$$hashKey": "object:126"
+                },
+                {
+                  "ruleId": "87bc37e2-798e-4d68-bb96-feb1da26da48",
+                  "title": "Generic repudiation threat",
+                  "type": "Repudiation",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic repudiation threat",
+                  "threatId": "bde886df-1d37-4835-a878-a7b16c8babfa",
+                  "$$hashKey": "object:135"
+                },
+                {
+                  "ruleId": "13000296-b17d-4b72-9cc4-f5cc33f80e4c",
+                  "title": "Generic information disclosure threat",
+                  "type": "Information disclosure",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic information disclosure threat",
+                  "threatId": "94f7b2a2-149c-4b19-9351-53daef33b902",
+                  "$$hashKey": "object:144"
+                },
+                {
+                  "ruleId": "edb05d76-a695-455f-947b-7d67b78bc31d",
+                  "title": "Generic DoS threat",
+                  "type": "Denial of service",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic DoS threat",
+                  "threatId": "89efd11b-59d4-408e-9915-91af0a46a2ab",
+                  "$$hashKey": "object:153"
+                },
+                {
+                  "ruleId": "c1377855-ea20-4c97-8861-f95c364fb8d2",
+                  "title": "Generic elevation threat",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "A generic elevation threat",
+                  "threatId": "dec17df3-c855-4c33-b4b5-0f93dcdf84a6",
+                  "$$hashKey": "object:162"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Vendor_Build_\nProcess"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
-                }
-              }
-            },
-            {
-              "type": "tm.Actor",
-              "size": {
-                "width": 160,
-                "height": 80
-              },
-              "position": {
-                "x": 1270,
-                "y": 350
-              },
-              "angle": 0,
-              "id": "d2185289-ab4d-4a21-820f-cdc8d69d5bfe",
-              "z": 5,
-              "hasOpenThreats": false,
-              "attrs": {
-                ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
-                },
-                "text": {
-                  "text": "Vendor_UpdateApproval\n_Staff"
-                },
-                ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -194,7 +236,7 @@
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "Vendor_Build_Staff"
+                  "text": "Vendor_Staff"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -255,28 +297,16 @@
                   "y": 720
                 },
                 {
-                  "x": 1180,
-                  "y": 720
-                },
-                {
-                  "x": 1150,
-                  "y": 730
-                },
-                {
-                  "x": 1110,
-                  "y": 740
-                },
-                {
-                  "x": 1060,
-                  "y": 720
+                  "x": 1120,
+                  "y": 724
                 }
               ],
               "id": "fbd4f615-e3a0-4334-86f6-29be351533da",
               "labels": [
                 {
                   "position": {
-                    "distance": 0.5407478287088819,
-                    "offset": -21.27414623092965
+                    "distance": 0.658057890662782,
+                    "offset": -15.807669979421
                   },
                   "attrs": {
                     "text": {
@@ -308,21 +338,26 @@
               },
               "smooth": true,
               "source": {
-                "x": 1290,
-                "y": 630
+                "x": 1361,
+                "y": 636
               },
               "target": {
-                "x": 1310,
-                "y": 830
+                "x": 1364,
+                "y": 832
               },
-              "vertices": [],
+              "vertices": [
+                {
+                  "x": 1363,
+                  "y": 791
+                }
+              ],
               "id": "34a2267f-5dbd-4dfb-a326-d55ea4622c40",
               "z": 8,
               "labels": [
                 {
                   "position": {
-                    "distance": 0.7097155273380001,
-                    "offset": -18.676707475238146
+                    "distance": 1,
+                    "offset": -28
                   },
                   "attrs": {
                     "text": {
@@ -334,6 +369,87 @@
                 }
               ],
               "attrs": {}
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "b18674ca-7713-4a3f-8b8c-30e73a9b27ae"
+              },
+              "target": {
+                "id": "892f62bf-244a-4f6c-939f-51a9be7bdda0"
+              },
+              "vertices": [
+                {
+                  "x": 994,
+                  "y": 307
+                }
+              ],
+              "id": "bba92780-2937-46ca-9ee6-5bde56ce9bb4",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "flow 10",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 9,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "23182640-cfaf-4e7f-8f8e-2f5827ec804a"
+              },
+              "target": {
+                "id": "b18674ca-7713-4a3f-8b8c-30e73a9b27ae"
+              },
+              "vertices": [],
+              "id": "bf55741b-3cb3-4e6c-a85e-dc77f2f30c7a",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "SAST, DAST, System\nTest, Approval\nProcesses",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 10,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
             }
           ]
         },
