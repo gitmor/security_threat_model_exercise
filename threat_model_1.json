@@ -21,19 +21,20 @@
                 "height": 100
               },
               "position": {
-                "x": 159,
-                "y": 137
+                "x": 340,
+                "y": 200
               },
               "angle": 0,
               "id": "57af4d19-49b5-40dc-840f-6825489ae047",
               "z": 1,
               "hasOpenThreats": false,
+              "description": "The software update service provided by Vendor that updates the vendor software based on licenses.",
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "process 0"
+                  "text": "Automated\nSoftware\nUpdate Service"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -47,25 +48,91 @@
                 "height": 80
               },
               "position": {
-                "x": 910,
-                "y": 143
+                "x": 1020,
+                "y": 400
               },
               "angle": 0,
               "id": "892f62bf-244a-4f6c-939f-51a9be7bdda0",
               "z": 2,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "description": "Vendor's internet-accessible storage location, where product updates are located",
               "isEncrypted": true,
               "isSigned": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "modelType": "STRIDE",
+                  "title": "Every Access to this datastore should be logged.",
+                  "type": "Repudiation",
+                  "description": "Malicious actors might access this datastore which might go",
+                  "mitigation": "Every access to this datastore should be logged with details such as user/role name, permissions level, ip addresses, method of access, locations/objects accessed etc.,",
+                  "threatId": "5a76302d-c1ae-4c30-9ec5-83d0c8176ff0",
+                  "$$hashKey": "object:390"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Vendor_Product_Update\n_Storage"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 1300,
+                "y": 250
+              },
+              "angle": 0,
+              "id": "6ce441f6-0cab-4984-98a5-bdbfa3faad66",
+              "z": 2,
+              "hasOpenThreats": true,
+              "description": "Database that holds custmer licenses",
+              "isEncrypted": true,
+              "isSigned": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "modelType": "STRIDE",
+                  "title": "Access to this database should be restricted.",
+                  "type": "Spoofing",
+                  "description": "Malicious actors might access this database.",
+                  "mitigation": "This database should be in private subnets, should only have ingress open to specific processes, should have no egress & should only be accessible by specific processes with specific user/pass controls or other identity controls.",
+                  "threatId": "5a76302d-c1ae-4c30-9ec5-83d0c8176ff0",
+                  "$$hashKey": "object:481"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "modelType": "STRIDE",
+                  "title": "Customer license database should be encrypted both at-rest & in transit",
+                  "type": "Information disclosure",
+                  "description": "Malicious actors might access this database if it is not encrypted.",
+                  "mitigation": "Encrypt database",
+                  "threatId": "5a18f45f-49b1-4415-9cb1-c8f10d27e20d",
+                  "$$hashKey": "object:467"
+                }
+              ],
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Customers License\nDatabase"
+                },
+                ".element-text": {
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -76,19 +143,83 @@
                 "height": 100
               },
               "position": {
-                "x": 350,
-                "y": 330
+                "x": 760,
+                "y": 200
               },
               "angle": 0,
               "id": "e5ca8cae-be68-4d8a-8405-f1f35e09fbe3",
               "z": 3,
+              "hasOpenThreats": true,
+              "description": "Vendor Web application that receives information from Software Update service & sends information about updated software",
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "modelType": "STRIDE",
+                  "title": "WAF protection",
+                  "type": "Tampering",
+                  "description": "Web application might be exploited.",
+                  "mitigation": "An industry standard WAF must be implemented which usually covers many attack vectors such as web attacks, sql injection attacks, anaymous ips, blacklisted ips, whitelisted ips, kernel specific exploits, buffer overflow etc",
+                  "threatId": "bf72087f-f830-4c31-b829-61f4dba8a8bb",
+                  "$$hashKey": "object:360"
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "modelType": "STRIDE",
+                  "title": "Access to Web application must be authenticated",
+                  "type": "Spoofing",
+                  "description": "Web application access must be authenticated.",
+                  "mitigation": "Web application access should be controlled by OAuth2.",
+                  "threatId": "1820b040-2747-4f9a-87c6-fe02cf9afc39",
+                  "$$hashKey": "object:374"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "modelType": "STRIDE",
+                  "title": "Web application must be protected by a Gateway",
+                  "type": "Denial of service",
+                  "description": "Web application might be hit with Denial attacks, excessive rates of requests.",
+                  "mitigation": "Web application must be fronted with an API Gateway (& preferably behind load balancers in autoscaling hosts in a private subnets & not in public subnets). Rate limit thresholds should be set on API Gateway",
+                  "threatId": "3e9d228d-0e0c-46cc-ba46-86b0c608f735",
+                  "$$hashKey": "object:384"
+                }
+              ],
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Vendor\nWebServer\napplication"
+                },
+                ".element-text": {
+                  "class": "element-text hasOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 1030,
+                "y": 240
+              },
+              "angle": 0,
+              "id": "b494ffae-04c9-4467-81ec-99ae72af9855",
+              "z": 3,
               "hasOpenThreats": false,
+              "description": "WebApp Child process that reads the correct version of software update from datastore & sends it back to clients.",
+              "threats": [],
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "process 2"
+                  "text": "Vendor\nWebServer A p\np Child Process"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
@@ -103,117 +234,23 @@
               },
               "position": {
                 "x": 950,
-                "y": 340
+                "y": 650
               },
               "angle": 0,
-              "id": "b18674ca-7713-4a3f-8b8c-30e73a9b27ae",
+              "id": "23182640-cfaf-4e7f-8f8e-2f5827ec804a",
               "z": 4,
               "hasOpenThreats": false,
-              "description": "Vendor process that uploads updates to the vendor product update storage",
+              "description": "Vendor process that builds software",
+              "threats": [],
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasNoOpenThreats isInScope"
                 },
                 "text": {
-                  "text": "Vendor_Softwa\nre_Update"
+                  "text": "Vendor_Build_\nUpdate_Proces\nses"
                 },
                 ".element-text": {
                   "class": "element-text hasNoOpenThreats isInScope"
-                }
-              }
-            },
-            {
-              "type": "tm.Process",
-              "size": {
-                "width": 100,
-                "height": 100
-              },
-              "position": {
-                "x": 954,
-                "y": 778
-              },
-              "angle": 0,
-              "id": "23182640-cfaf-4e7f-8f8e-2f5827ec804a",
-              "z": 4,
-              "hasOpenThreats": true,
-              "description": "Vendor process that builds software",
-              "threats": [
-                {
-                  "ruleId": "b2a6d40d-d3f8-4750-8e4d-c02cc84b13dc",
-                  "title": "Generic spoofing threat",
-                  "type": "Spoofing",
-                  "modelType": "STRIDE",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "description": "A generic spoofing threat",
-                  "threatId": "c0401a0e-0325-442b-ae80-4726d7ef2735",
-                  "$$hashKey": "object:117"
-                },
-                {
-                  "ruleId": "4adaa48a-0345-4533-a189-64c98c4420dd",
-                  "title": "Generic tampering threat",
-                  "type": "Tampering",
-                  "modelType": "STRIDE",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "description": "A generic tampering threat",
-                  "threatId": "03cb879f-b03a-44fc-89ec-13abb0c07b29",
-                  "$$hashKey": "object:126"
-                },
-                {
-                  "ruleId": "87bc37e2-798e-4d68-bb96-feb1da26da48",
-                  "title": "Generic repudiation threat",
-                  "type": "Repudiation",
-                  "modelType": "STRIDE",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "description": "A generic repudiation threat",
-                  "threatId": "bde886df-1d37-4835-a878-a7b16c8babfa",
-                  "$$hashKey": "object:135"
-                },
-                {
-                  "ruleId": "13000296-b17d-4b72-9cc4-f5cc33f80e4c",
-                  "title": "Generic information disclosure threat",
-                  "type": "Information disclosure",
-                  "modelType": "STRIDE",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "description": "A generic information disclosure threat",
-                  "threatId": "94f7b2a2-149c-4b19-9351-53daef33b902",
-                  "$$hashKey": "object:144"
-                },
-                {
-                  "ruleId": "edb05d76-a695-455f-947b-7d67b78bc31d",
-                  "title": "Generic DoS threat",
-                  "type": "Denial of service",
-                  "modelType": "STRIDE",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "description": "A generic DoS threat",
-                  "threatId": "89efd11b-59d4-408e-9915-91af0a46a2ab",
-                  "$$hashKey": "object:153"
-                },
-                {
-                  "ruleId": "c1377855-ea20-4c97-8861-f95c364fb8d2",
-                  "title": "Generic elevation threat",
-                  "type": "Elevation of privilege",
-                  "modelType": "STRIDE",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "description": "A generic elevation threat",
-                  "threatId": "dec17df3-c855-4c33-b4b5-0f93dcdf84a6",
-                  "$$hashKey": "object:162"
-                }
-              ],
-              "attrs": {
-                ".element-shape": {
-                  "class": "element-shape hasOpenThreats isInScope"
-                },
-                "text": {
-                  "text": "Vendor_Build_\nProcess"
-                },
-                ".element-text": {
-                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -224,22 +261,70 @@
                 "height": 80
               },
               "position": {
-                "x": 1430,
-                "y": 670
+                "x": 1460,
+                "y": 660
               },
               "angle": 0,
               "id": "9d64ddf7-bb52-4204-9217-3fc8c98524ac",
               "z": 5,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "ruleId": "b2a6d40d-d3f8-4750-8e4d-c02cc84b13dc",
+                  "title": "SSO Access only",
+                  "type": "Spoofing",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "High",
+                  "description": "Local accounts should not be created for Vendor staff to access build systems, software update repository etc,",
+                  "mitigation": "ALL of these MUST be followed for mitigation. These are all combined into a single threat to keep this document small.\n1. Must use SSO access associated with a corporate AD system\n2. Must use MFA, hardware MFA if possible, no SMS only virtual MFA tokens\n3. Must have strong password controls (ie., ALL of min password length of 17+ chars, all chars & symbols, no password reuse of last 50+ values, password rotation every 60 days). i.e., all possible strong password policy options that will force/drive the use of password manager among users",
+                  "threatId": "e73c04d0-1c54-4dd8-a7de-4b976d7d435f",
+                  "$$hashKey": "object:343"
+                },
+                {
+                  "ruleId": "87bc37e2-798e-4d68-bb96-feb1da26da48",
+                  "title": "RBAC access with permissions boundaries",
+                  "type": "Elevation of privilege",
+                  "modelType": "STRIDE",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "Users who can access the system might be able to create other users/roles with higher privilege than the permission with which they logged into the system.",
+                  "mitigation": "Role Based Access Controls along with Permissions Boundaries must be setup for all users.",
+                  "threatId": "5854c47e-9f68-4010-b0b8-91c677b06bad",
+                  "$$hashKey": "object:143"
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "modelType": "STRIDE",
+                  "type": "Repudiation",
+                  "title": "All user access to the systems must be logged",
+                  "description": "Unauthorized users can log into the system without traceability.",
+                  "mitigation": "1. All logins to the system MUST be logged.\n2. for public cloud systems an entire audit trail of all actions performed in the system MUST be available.",
+                  "threatId": "8175616f-a378-4d42-8923-5c6b14e185f8",
+                  "$$hashKey": "object:220"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "modelType": "STRIDE",
+                  "title": "Access to systems through VPN only for remote access",
+                  "type": "Spoofing",
+                  "description": "Users should not be able to access the systems from public internet if possible",
+                  "mitigation": "Setup Corporate VPN, whitelist specific IPs or IP ranges & only allow access from these.",
+                  "threatId": "52e00eda-b823-45d1-a4ec-a029a737b9b3",
+                  "$$hashKey": "object:226"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Vendor_Staff"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -270,67 +355,6 @@
               }
             },
             {
-              "type": "tm.Flow",
-              "size": {
-                "width": 10,
-                "height": 10
-              },
-              "smooth": true,
-              "source": {
-                "x": 1340,
-                "y": 720
-              },
-              "target": {
-                "id": "23182640-cfaf-4e7f-8f8e-2f5827ec804a"
-              },
-              "vertices": [
-                {
-                  "x": 1420,
-                  "y": 720
-                },
-                {
-                  "x": 1280,
-                  "y": 720
-                },
-                {
-                  "x": 1230,
-                  "y": 720
-                },
-                {
-                  "x": 1120,
-                  "y": 724
-                }
-              ],
-              "id": "fbd4f615-e3a0-4334-86f6-29be351533da",
-              "labels": [
-                {
-                  "position": {
-                    "distance": 0.658057890662782,
-                    "offset": -15.807669979421
-                  },
-                  "attrs": {
-                    "text": {
-                      "text": "Build interaction",
-                      "font-weight": "400",
-                      "font-size": "small"
-                    }
-                  }
-                }
-              ],
-              "z": 7,
-              "hasOpenThreats": false,
-              "isEncrypted": true,
-              "isPublicNetwork": true,
-              "attrs": {
-                ".marker-target": {
-                  "class": "marker-target hasNoOpenThreats isInScope"
-                },
-                ".connection": {
-                  "class": "connection hasNoOpenThreats isInScope"
-                }
-              }
-            },
-            {
               "type": "tm.Boundary",
               "size": {
                 "width": 10,
@@ -342,13 +366,13 @@
                 "y": 636
               },
               "target": {
-                "x": 1364,
-                "y": 832
+                "x": 1360,
+                "y": 820
               },
               "vertices": [
                 {
-                  "x": 1363,
-                  "y": 791
+                  "x": 1300,
+                  "y": 730
                 }
               ],
               "id": "34a2267f-5dbd-4dfb-a326-d55ea4622c40",
@@ -356,8 +380,8 @@
               "labels": [
                 {
                   "position": {
-                    "distance": 1,
-                    "offset": -28
+                    "distance": 0.912456332115313,
+                    "offset": -49.54171018612104
                   },
                   "attrs": {
                     "text": {
@@ -378,32 +402,42 @@
               },
               "smooth": true,
               "source": {
-                "id": "b18674ca-7713-4a3f-8b8c-30e73a9b27ae"
+                "id": "9d64ddf7-bb52-4204-9217-3fc8c98524ac"
               },
               "target": {
-                "id": "892f62bf-244a-4f6c-939f-51a9be7bdda0"
+                "id": "23182640-cfaf-4e7f-8f8e-2f5827ec804a"
               },
               "vertices": [
                 {
-                  "x": 994,
-                  "y": 307
+                  "x": 1300,
+                  "y": 690
+                },
+                {
+                  "x": 1170,
+                  "y": 690
+                },
+                {
+                  "x": 1120,
+                  "y": 690
                 }
               ],
-              "id": "bba92780-2937-46ca-9ee6-5bde56ce9bb4",
+              "id": "13505f75-3739-40ee-9bb2-e0b97f52fb3f",
               "labels": [
                 {
                   "position": 0.5,
                   "attrs": {
                     "text": {
-                      "text": "flow 10",
+                      "text": "Vendor System\nAccess",
                       "font-weight": "400",
                       "font-size": "small"
                     }
                   }
                 }
               ],
-              "z": 9,
+              "z": 11,
               "hasOpenThreats": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
               "attrs": {
                 ".marker-target": {
                   "class": "marker-target hasNoOpenThreats isInScope"
@@ -424,23 +458,339 @@
                 "id": "23182640-cfaf-4e7f-8f8e-2f5827ec804a"
               },
               "target": {
-                "id": "b18674ca-7713-4a3f-8b8c-30e73a9b27ae"
+                "id": "892f62bf-244a-4f6c-939f-51a9be7bdda0"
               },
-              "vertices": [],
-              "id": "bf55741b-3cb3-4e6c-a85e-dc77f2f30c7a",
+              "vertices": [
+                {
+                  "x": 1040,
+                  "y": 580
+                },
+                {
+                  "x": 1070,
+                  "y": 520
+                }
+              ],
+              "id": "1306920b-068c-40a1-9e94-2f1693fa4852",
               "labels": [
                 {
                   "position": 0.5,
                   "attrs": {
                     "text": {
-                      "text": "SAST, DAST, System\nTest, Approval\nProcesses",
+                      "text": "store",
                       "font-weight": "400",
                       "font-size": "small"
                     }
                   }
                 }
               ],
-              "z": 10,
+              "z": 12,
+              "hasOpenThreats": false,
+              "description": "It is assumed that the communication between the Vendor Build & Update process is on an encrypted channel over a internal/private network. If the vendor solution is implemented on public cloud, then the communication/dataflow should be preferably implemented as a privatelink that traverses on an encrypted channel over only cloud provider network as opposed to public internet over HTTPS interface.",
+              "isEncrypted": true,
+              "protocol": "HTTPS",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "57af4d19-49b5-40dc-840f-6825489ae047"
+              },
+              "target": {
+                "id": "e5ca8cae-be68-4d8a-8405-f1f35e09fbe3"
+              },
+              "vertices": [
+                {
+                  "x": 540,
+                  "y": 180
+                }
+              ],
+              "id": "f2112467-2993-4e64-b3ed-042fdfa6b19b",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.40149553661411214,
+                    "offset": -1.581972493151198
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "Software Update\nRequest",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 13,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "HTTPS",
+              "description": "HTTPS request that contains metadata of installed versions.",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Boundary",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "x": 600,
+                "y": 30
+              },
+              "target": {
+                "x": 770,
+                "y": 560
+              },
+              "vertices": [],
+              "id": "96e45f96-c26b-483f-969d-f92048366872",
+              "z": 15,
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.15917282427393636,
+                    "offset": -15.608241439999649
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "Internet boundary",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "attrs": {}
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "b494ffae-04c9-4467-81ec-99ae72af9855"
+              },
+              "target": {
+                "x": 400,
+                "y": 300
+              },
+              "vertices": [
+                {
+                  "x": 550,
+                  "y": 490
+                }
+              ],
+              "id": "840ea7b5-7f0a-46b8-80af-995a3aac14ec",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Latest version of\nsoftware",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 17,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "e5ca8cae-be68-4d8a-8405-f1f35e09fbe3"
+              },
+              "target": {
+                "id": "b494ffae-04c9-4467-81ec-99ae72af9855"
+              },
+              "vertices": [],
+              "id": "256a1754-59eb-475a-8e40-f122457b58ae",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Spawn",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 18,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "b494ffae-04c9-4467-81ec-99ae72af9855"
+              },
+              "target": {
+                "id": "892f62bf-244a-4f6c-939f-51a9be7bdda0"
+              },
+              "vertices": [],
+              "id": "896a3509-44c2-4e92-a3df-6b8411053a17",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Read from datastore",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 19,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "protocol": "HTTPS",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "b494ffae-04c9-4467-81ec-99ae72af9855"
+              },
+              "target": {
+                "id": "6ce441f6-0cab-4984-98a5-bdbfa3faad66"
+              },
+              "vertices": [
+                {
+                  "x": 1230,
+                  "y": 240
+                }
+              ],
+              "id": "a87faff2-9992-43f3-9b13-dacbd497fc94",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.4920600570429531,
+                    "offset": -12.739881441218136
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "Check customer\nlicense",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 20,
+              "hasOpenThreats": false,
+              "description": "Check customer license against database",
+              "isEncrypted": false,
+              "protocol": "",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "6ce441f6-0cab-4984-98a5-bdbfa3faad66"
+              },
+              "target": {
+                "id": "b494ffae-04c9-4467-81ec-99ae72af9855"
+              },
+              "vertices": [
+                {
+                  "x": 1190,
+                  "y": 330
+                }
+              ],
+              "id": "c146c308-da4c-44d3-b22b-f06f8ce9739a",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.5279750888989304,
+                    "offset": -11.471235679162426
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "License Response",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 21,
               "hasOpenThreats": false,
               "attrs": {
                 ".marker-target": {
