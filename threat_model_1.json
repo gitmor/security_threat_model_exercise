@@ -90,8 +90,8 @@
                 "height": 80
               },
               "position": {
-                "x": 1300,
-                "y": 250
+                "x": 1418,
+                "y": 263
               },
               "angle": 0,
               "id": "6ce441f6-0cab-4984-98a5-bdbfa3faad66",
@@ -106,11 +106,11 @@
                   "severity": "Medium",
                   "modelType": "STRIDE",
                   "title": "Access to this database should be restricted.",
-                  "type": "Spoofing",
+                  "type": "Information disclosure",
                   "description": "Malicious actors might access this database.",
                   "mitigation": "This database should be in private subnets, should only have ingress open to specific processes, should have no egress & should only be accessible by specific processes with specific user/pass controls or other identity controls.",
                   "threatId": "5a76302d-c1ae-4c30-9ec5-83d0c8176ff0",
-                  "$$hashKey": "object:481"
+                  "$$hashKey": "object:105"
                 },
                 {
                   "status": "Open",
@@ -121,7 +121,7 @@
                   "description": "Malicious actors might access this database if it is not encrypted.",
                   "mitigation": "Encrypt database",
                   "threatId": "5a18f45f-49b1-4415-9cb1-c8f10d27e20d",
-                  "$$hashKey": "object:467"
+                  "$$hashKey": "object:205"
                 }
               ],
               "attrs": {
@@ -172,7 +172,7 @@
                   "description": "Web application access must be authenticated.",
                   "mitigation": "Web application access should be controlled by OAuth2.",
                   "threatId": "1820b040-2747-4f9a-87c6-fe02cf9afc39",
-                  "$$hashKey": "object:374"
+                  "$$hashKey": "object:71"
                 },
                 {
                   "status": "Open",
@@ -183,7 +183,29 @@
                   "description": "Web application might be hit with Denial attacks, excessive rates of requests.",
                   "mitigation": "Web application must be fronted with an API Gateway (& preferably behind load balancers in autoscaling hosts in a private subnets & not in public subnets). Rate limit thresholds should be set on API Gateway",
                   "threatId": "3e9d228d-0e0c-46cc-ba46-86b0c608f735",
-                  "$$hashKey": "object:384"
+                  "$$hashKey": "object:77"
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "modelType": "STRIDE",
+                  "title": "Logging",
+                  "type": "Denial of service",
+                  "description": "Without logging (esp of failure attempts), repeated attempts could be made.",
+                  "mitigation": "Log all attempts (esp failed ones) & together with WAF protection, authentication controls, rate limiting should serve as mitigation against brute force tries. Also raise alarms on access failures.",
+                  "threatId": "46c71bf7-f27f-4d57-a760-40fb61844771",
+                  "$$hashKey": "object:145"
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "modelType": "STRIDE",
+                  "title": "Sanity check user inputted metadata that contains software versions",
+                  "type": "Tampering",
+                  "description": "Inputted metadata might contain injection data.",
+                  "mitigation": "User inputted metadata that contains software versions must be sanity checked.",
+                  "threatId": "62f9f408-f113-4601-9c36-cba2477da450",
+                  "$$hashKey": "object:151"
                 }
               ],
               "attrs": {
@@ -792,6 +814,142 @@
               ],
               "z": 21,
               "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 1260,
+                "y": 12
+              },
+              "angle": 0,
+              "id": "a19b1a88-d3de-493e-8e10-4959ed7ddf2e",
+              "z": 23,
+              "hasOpenThreats": true,
+              "storesCredentials": true,
+              "isEncrypted": true,
+              "description": "DB Credentials Secret Store (better to not use DB credentials at all & instead use RBAC (eg., access DB with IAM role access with temporary credentials)",
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "modelType": "STRIDE",
+                  "title": "Access to this secret store should be restricted.",
+                  "type": "Information disclosure",
+                  "description": "Malicious actors might access this secret store to get credentials.",
+                  "mitigation": "Access to this secret store must be restricted to a narrow scope. Even read permissions to this secret store should be restricted to *specific items*. eg. if a process needs access to 2 items in the secret store, only those 2 items should be given access to & not to read entire secret store.",
+                  "threatId": "5c32e3a2-5fe8-47cc-95f2-6ebb7d2b3351",
+                  "$$hashKey": "object:197"
+                }
+              ],
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Credentials Secret Store"
+                },
+                ".element-text": {
+                  "class": "element-text hasOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "b494ffae-04c9-4467-81ec-99ae72af9855"
+              },
+              "target": {
+                "id": "a19b1a88-d3de-493e-8e10-4959ed7ddf2e"
+              },
+              "vertices": [
+                {
+                  "x": 1151,
+                  "y": 88
+                }
+              ],
+              "id": "23c0a626-39a0-4a87-9af7-15eed6642827",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Get license database\ncredentials\n(restricted access)",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 24,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "description": "Get restricted access to license database credentials",
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "size": {
+                "width": 10,
+                "height": 10
+              },
+              "smooth": true,
+              "source": {
+                "id": "a19b1a88-d3de-493e-8e10-4959ed7ddf2e"
+              },
+              "target": {
+                "id": "b494ffae-04c9-4467-81ec-99ae72af9855"
+              },
+              "vertices": [
+                {
+                  "x": 1229,
+                  "y": 127
+                },
+                {
+                  "x": 1161,
+                  "y": 186
+                }
+              ],
+              "id": "955fbb20-cda1-467d-8770-dc3eb5d13c12",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Provide license\ndatabase credentials\n(restricted access)",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 25,
+              "hasOpenThreats": false,
+              "isEncrypted": true,
+              "description": "Provide credentials for restricted access to license database",
               "attrs": {
                 ".marker-target": {
                   "class": "marker-target hasNoOpenThreats isInScope"
