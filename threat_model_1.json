@@ -65,7 +65,7 @@
                   "modelType": "STRIDE",
                   "title": "Every Access to this datastore should be logged.",
                   "type": "Repudiation",
-                  "description": "Malicious actors might access this datastore which might go",
+                  "description": "Malicious actors might access this datastore.",
                   "mitigation": "Every access to this datastore should be logged with details such as user/role name, permissions level, ip addresses, method of access, locations/objects accessed etc.,",
                   "threatId": "5a76302d-c1ae-4c30-9ec5-83d0c8176ff0",
                   "$$hashKey": "object:390"
