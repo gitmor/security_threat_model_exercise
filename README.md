@@ -8,4 +8,4 @@ Other tools can also be used to generate threat model.
 
 # Repository Contents
 threat_model_1.json: Has the threat model defined in json notation \
-threat_model_1.pdf: Has the threat model report generated from the threat model \
+threat_model_1.pdf: Has the threat model report generated from the threat model
